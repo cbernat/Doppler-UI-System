@@ -24,10 +24,10 @@
     "url": "https://github.com/FromDoppler/Doppler-UI-System"
   },
   "scripts": {
-    "semantic-release": "semantic-release",
+    "eclint-check": "./node_modules/.bin/eclint check \"**/*\"",
     "prettier": "prettier \"assets/**/*.{css,scss,html}\" \"!assets/scss/libs/**/*.{css,scss}\" --write",
-    "prettier-check": "prettier-check \"assets/**/*.{css,scss,html}\" \"!assets/scss/libs/**/*.{css,scss}\"",
-    "eclint-check": "./node_modules/.bin/eclint check \"**/*\""
+    "prettier-check": "prettier-check \"assets/**/*.{css,scss,html}\" \"!assets/scss/libs/**/*.{css,scss}\"",  
+    "semantic-release": "semantic-release"
   },
   "prettier": {
     "semi": true,
