@@ -23,10 +23,13 @@
 @import 'helpers/mixins';
 @import 'helpers/animations';
 @import 'helpers/classes';
-@import 'modules/mixins/*';
-@import 'modules/_preload';
-@import 'modules/*';
+
+@import 'modules/mixins/*.*';
+
+
+@import 'modules/preload';
+@import 'modules/*.*';
 @import 'core/base';
-@import 'libs/**/*';
-@import 'utilities/*';
-@import 'templates/**/*';
+@import 'libs/**/*.scss';
+@import 'utilities/*.*';
+@import 'templates/**/*.*';

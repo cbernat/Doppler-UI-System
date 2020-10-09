@@ -23,10 +23,23 @@
     "type": "git",
     "url": "https://github.com/FromDoppler/Doppler-UI-System"
   },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "last 3 iOS versions",
+    "Firefox > 20",
+    "ie 9"
+  ],
   "scripts": {
+    "build": "npm run del --dest ./dev && npm run css-compile-dev && npm run css-prefix && npm run css-minify",
+    "del": "del-cli dest",
+    "css-compile": "node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js ./assets/scss/styles.scss --o --dest",
+    "css-compile-dev": "npm run css-compile --dest ./dev/css/styles.css",
+    "css-minify": "./node_modules/.bin/cleancss -o ./dev/css/styles.css --source-map ./dev/css/*.css",
+    "css-prefix": "postcss --use autoprefixer --use postcss-flexibility --replace ./dev/css/styles.css",
     "eclint-check": "./node_modules/.bin/eclint check \"**/*\"",
     "prettier": "prettier \"assets/**/*.{css,scss,html}\" \"!assets/scss/libs/**/*.{css,scss}\" --write",
-    "prettier-check": "prettier-check \"assets/**/*.{css,scss,html}\" \"!assets/scss/libs/**/*.{css,scss}\"",  
+    "prettier-check": "prettier-check \"assets/**/*.{css,scss,html}\" \"!assets/scss/libs/**/*.{css,scss}\"",
     "semantic-release": "semantic-release"
   },
   "prettier": {
@@ -39,9 +52,12 @@
     "@semantic-release/exec": "^5.0.0",
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.12",
+    "clean-css-cli": "^4.3.0",
     "css-mqpacker": "~7.0.0",
     "del": "^5.1.0",
+    "del-cli": "^3.0.1",
     "eclint": "^2.8.1",
+    "express": "^4.17.1",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "~2.6.1",
@@ -61,7 +77,11 @@
     "gulp-util": "~3.0.8",
     "gulp-zip": "~5.0.2",
     "node-sass": "^4.14.1",
+    "node-sass-glob-importer": "^5.3.2",
+    "node-sass-magic-importer": "^5.3.2",
+    "postcss": "^8.1.1",
     "postcss-clean": "~1.1.0",
+    "postcss-cli": "^8.1.0",
     "postcss-flexibility": "^2.0.0",
     "prettier": "^2.1.2",
     "prettier-check": "^2.0.0",
@@ -69,8 +89,7 @@
     "semantic-release": "^17.2.1",
     "sort-css-media-queries": "^1.5.0",
     "ttf2woff2": "^2.0.3",
-    "web-push": "^3.4.4",
-    "express": "^4.17.1"
+    "web-push": "^3.4.4"
   },
   "main": "pdr",
   "engines": {
