@@ -30,17 +30,28 @@
     "Firefox > 20",
     "ie 9"
   ],
+  "webfont": {
+    "files": "./assets/icons/*.svg",
+    "fontName": "icon-font",
+    "templateClassName": "icon",
+    "templateFontPath": "../fonts/",
+    "template": "./assets/scss/libs/webfont/template.css"
+  },
   "scripts": {
-    "build": "npm run del --dest ./dev && npm run css-compile-dev && npm run css-prefix && npm run css-minify",
-    "del": "del-cli dest",
+    "build": "npm run del --dest ./dev && npm run css-compile-dev && npm run css-prefix && npm run css-minify && npm run font-dev",
     "css-compile": "node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js ./assets/scss/styles.scss --o --dest",
     "css-compile-dev": "npm run css-compile --dest ./dev/css/styles.css",
-    "css-minify": "./node_modules/.bin/cleancss -o ./dev/css/styles.css --source-map ./dev/css/*.css",
+    "css-minify": "./node_modules/.bin/cleancss -o ./dev/css/styles.css --source-map ./dev/css/styles.css",
     "css-prefix": "postcss --use autoprefixer --use postcss-flexibility --replace ./dev/css/styles.css",
+    "del": "del-cli dest",
     "eclint-check": "./node_modules/.bin/eclint check \"**/*\"",
+    "font": "webfont ./assets/icons/*.svg -d ./assets/fonts -s ./assets/scss/libs/webfont/compiled --font-height 1001 --normalize true",
+    "font-dev": "npm run font && npm run copyfiles ./assets/fonts/*.* ./dev/fonts",
+    "copyfiles": "./node_modules/.bin/cpy",
     "prettier": "prettier \"assets/**/*.{css,scss,html}\" \"!assets/scss/libs/**/*.{css,scss}\" --write",
     "prettier-check": "prettier-check \"assets/**/*.{css,scss,html}\" \"!assets/scss/libs/**/*.{css,scss}\"",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "webfont": "node node_modules/webfont/dist/cli.js"
   },
   "prettier": {
     "semi": true,
@@ -53,6 +64,8 @@
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.12",
     "clean-css-cli": "^4.3.0",
+    "cpy": "^8.1.1",
+    "cpy-cli": "^3.1.1",
     "css-mqpacker": "~7.0.0",
     "del": "^5.1.0",
     "del-cli": "^3.0.1",
@@ -89,7 +102,8 @@
     "semantic-release": "^17.2.1",
     "sort-css-media-queries": "^1.5.0",
     "ttf2woff2": "^2.0.3",
-    "web-push": "^3.4.4"
+    "web-push": "^3.4.4",
+    "webfont": "^9.0.0"
   },
   "main": "pdr",
   "engines": {
