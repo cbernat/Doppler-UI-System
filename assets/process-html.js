@@ -8,16 +8,13 @@ glob("./assets/templates/*.html", '', function (er, files) {
     exec('npm run html-processor ' + file + ' -- --output ./dev/'+path.basename(file)+' -e dev', (err, stdout, stderr) => {
         if (err) {
           //some err occurred
-          console.error(err)
-          
+          console.error(err);
         } else {
-         // the *entire* stdout and stderr (buffered)
-         console.log(`${stdout}`);
-         console.log(`${stderr}`);
-         return;
+          // the *entire* stdout and stderr (buffered)
+          console.log(`${stdout}`);
+          console.log(`${stderr}`);
+          return;
         }
-      });  
-   });
+      });
+    });
 });
-
-
