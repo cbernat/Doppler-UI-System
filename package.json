@@ -38,9 +38,10 @@
     "template": "./assets/scss/libs/webfont/template.css"
   },
   "scripts": {
-    "build": "npm-run-all del-dev css-compile-dev css-prefix css-minify font-dev imagemin-dev html-dev js-minify-dev",
-    "css-compile": "node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js ./assets/scss/styles.scss --o --dest",
-    "css-compile-dev": "npm run css-compile --dest ./dev/css/styles.css",
+    "build": "npm-run-all del-dev css-compile font-dev imagemin-dev html-dev js-minify-dev",
+    "css-compile": "npm-run-all css-compile-dev css-prefix css-minify",
+    "css-compile-sass": "node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js ./assets/scss/styles.scss --o --dest",
+    "css-compile-dev": "npm run css-compile-sass --dest ./dev/css/styles.css",
     "css-minify": "./node_modules/.bin/cleancss -o ./dev/css/styles.css --source-map ./dev/css/styles.css",
     "css-prefix": "postcss --use autoprefixer --use postcss-flexibility --replace ./dev/css/styles.css",
     "del-dev": "del-cli ./dev",

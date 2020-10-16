@@ -15,3 +15,4 @@ dev/fonts/*
 /dev/**
 
 /assets/scss/libs/webfont/compiled/template.css
+/main.js
